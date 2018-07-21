@@ -1,0 +1,15 @@
+---
+- hosts: all
+  vars_files:
+    - /tmp/referfile.yml
+  tasks:
+   - name: installing httpd package
+     yum: pkg={{ name1 }} state=installed
+     notify: 
+      - restart HTTPD
+   - name: deploy website
+     template: src=/tmp/index.html dest=/var/www/html/
+  handlers:
+    - name: restart HTTPD
+      service: name=httpd state=started
+     

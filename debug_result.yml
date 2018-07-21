@@ -1,0 +1,15 @@
+---
+- hosts: all
+  tasks:
+   - name: dat stamp for the play book
+     raw: /usr/bin/date > /home/ansible/playbook_start.log
+   - name: install apache server
+     yum: name=httpd state=latest
+   - name: install apache
+     service: name=httpd state=restarted
+   - name: verify the service running 
+     command: systemctl status httpd
+     register: result
+   - debug: var=result
+   - name: date stamp for the play book ends
+     raw: /usr/bin/date > /home/ansible/playbooks_ends.log

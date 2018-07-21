@@ -1,0 +1,16 @@
+---
+- hosts: all
+  vars_files: 
+   - /tmp/referfile
+  sudo: yes
+  user: ansible
+  tasks: 
+   - name: installing the  samba pakg
+     yum: pkg= {{ name1 }} state=installed 
+     notify: 
+      - restart the samba service
+   - name: installed  the vsftpd pkg
+     yum: pkg= {{ name2 }} state=installed
+  handlers:
+    - name: restart the samba service 
+      service: name=samba state=started

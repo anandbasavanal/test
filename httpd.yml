@@ -1,0 +1,11 @@
+---
+- hosts: all
+  sudo: yes
+  user: ansible
+  tasks:
+  - name: installing web server
+    yum: pkg=httpd state=installed
+  - name: installaing samba
+    yum: pkg=samba state=absent 
+
+

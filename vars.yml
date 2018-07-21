@@ -1,0 +1,13 @@
+---
+- hosts: all
+  vars:
+   name1: samba
+   name2: vsftpd
+  sudo: yes
+  user: ansible
+  tasks:
+   - name: installing the samba
+     yum: pkg={{ name1 }} state=installed
+   - name: installing the ftp
+     yum: pkg={{ name2 }} state=installed
+

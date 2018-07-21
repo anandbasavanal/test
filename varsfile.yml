@@ -1,0 +1,11 @@
+---
+- hosts: all
+  vars_files: 
+   - /tmp/referfile
+  sudo: yes
+  user: ansible
+  tasks:
+   - name: installing nfs server
+     yum: pkg= {{ name1 }} state=installed
+   - name: installing vsftpd server 
+     yum: pkg= {{ name2 }} state=installed 

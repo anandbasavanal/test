@@ -1,0 +1,4 @@
+---
+- hosts: all
+ - name: check for the ping status
+
